@@ -12,8 +12,8 @@ services:
       MINIO_BUCKET: messages
       KAFKA_BOOTSTRAP_SERVERS: kafka-broker-1:9092
     networks:
-      - kafka_dev
+      - kafka_dev_kafka_dev
 
 networks:
-  kafka_dev:
+  kafka_dev_kafka_dev:
     external: true
