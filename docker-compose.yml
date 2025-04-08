@@ -1,0 +1,19 @@
+services:
+  analytics_processor:
+    build: .
+    restart: always
+    depends_on:
+      - kafka-broker-1
+      - minio
+    environment:
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: minioaccess
+      MINIO_SECRET_KEY: miniosecret
+      MINIO_BUCKET: messages
+      KAFKA_BOOTSTRAP_SERVERS: kafka-broker-1:9092
+    networks:
+      - kafka_dev
+
+networks:
+  kafka_dev:
+    external: true
